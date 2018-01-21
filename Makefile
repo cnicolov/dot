@@ -9,7 +9,8 @@ SHELL := bash
 	link-zshfunctions \
 	link-zshaliases \
 	link-zshenv \
-	install-fzf
+	link-fzf \
+	install-python%-bundle
 
 all: \
 	brew-bundle \
@@ -20,7 +21,12 @@ all: \
 	link-zshfunctions \
 	link-zshaliases \
 	link-zshenv \
-	install-fzf
+	link-fzf \
+	install-python2-bundle \
+	install-python3-bundle
+
+link-fzf:
+	ln -sf $(PWD)/fzf.zsh ~/.fzf.zsh
 
 link-zshaliases:
 	ln -sf $(PWD)/zshaliases ~/.zshaliases
@@ -46,5 +52,5 @@ link-tmux:
 brew-bundle:
 	brew bundle
 
-install-fzf:
-	$$(brew --prefix)/opt/fzf/install
+install-python%-bundle:
+	pip$* install -r python$*-requirements.txt
