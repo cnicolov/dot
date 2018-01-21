@@ -10,7 +10,6 @@ promptinit
 
 source ~/.zplug/init.zsh
 
-zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*darwin*amd64*"
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "b4b4r07/enhancd", at:v1
 zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
