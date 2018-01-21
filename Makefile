@@ -54,3 +54,6 @@ brew-bundle:
 
 install-python%-bundle:
 	pip$* install -r python$*-requirements.txt
+
+run-tests:
+	python3 -m unittest $(wildcard tests/*.py)

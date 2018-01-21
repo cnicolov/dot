@@ -306,3 +306,5 @@ let g:licenses_custom_path = '$HOME/.config/nvim/licenses/'
 
 command! License call InsertLicense('kinvey')
 let g:ref_javadoc_path = 'build/docs'
+
+let g:jedi#force_py_version = 3
