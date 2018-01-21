@@ -1,0 +1,5 @@
+alias ls='ls -G'
+alias ll='ls -lG'
+alias vim='nvim'
+alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+

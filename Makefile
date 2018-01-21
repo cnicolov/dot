@@ -6,6 +6,9 @@ SHELL := bash
 	link-nvim \
 	link-gitconfig \
 	link-tmux \
+	link-zshfunctions \
+	link-zshaliases \
+	link-zshenv \
 	install-fzf
 
 all: \
@@ -14,7 +17,19 @@ all: \
 	link-nvim \
 	link-tmux \
 	link-gitconfig \
+	link-zshfunctions \
+	link-zshaliases \
+	link-zshenv \
 	install-fzf
+
+link-zshaliases:
+	ln -sf $(PWD)/zshaliases ~/.zshaliases
+
+link-zshfunctions:
+	ln -sf $(PWD)/zshfunctions ~/.zshfunctions
+
+link-zshenv:
+	ln -sf $(PWD)/zshenv ~/.zshenv
 
 link-gitconfig:
 	ln -sf $(PWD)/gitconfig ~/.gitconfig
@@ -23,7 +38,7 @@ link-zshrc:
 	ln -sf $(PWD)/zshrc ~/.zshrc
 
 link-nvim:
-	mkdir -p ~/.config && ln -sf $(PWD)/nvim ~/.config/nvim
+	if [[ ! -d ~/.config/nvim ]]; then mkdir -p ~/.config && ln -sf $(PWD)/nvim ~/.config/nvim; fi
 
 link-tmux:
 	ln -sf $(PWD)/tmux.conf ~/.tmux.conf
