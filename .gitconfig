@@ -1,0 +1,59 @@
+[user]
+	name = Kristiyan Nikolov
+	email = kristiyan.nikolov@telerik.com
+	signingkey = 9E1CAE98511C7754
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[core]
+	askPass = true
+[gpg]
+	program = gpg2
+[push]
+	default = current
+[alias]
+	cp = cherry-pick
+	st = status -s
+	cl = clone
+	ci = commit
+	co = checkout
+	cob = checkout -b
+	pl = pull
+	br = branch
+	r = reset
+	r1 = reset HEAD^
+	r2 = reset HEAD^^
+	rh = reset --hard
+	rh1 = reset HEAD^ --hard
+	rh2 = reset HEAD^^ --hard
+	sl = stash list
+	sa = stash apply
+	ss = stash save
+	ld = log --graph --oneline --decorate
+	diff = diff --word-diff
+	diffn = diff --no-pager
+	dc = diff --cached
+	ds = diff --stat
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	rao = remote add origin
+	dr  = "!f() { git diff "$1"^.."$1"; }; f"
+	lc  = "!f() { git ll "$1"^.."$1"; }; f"
+	diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+	clean-merged = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
+	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	f = "!git ls-files | ag -i"
+	grep = !ag
+	gr = !ag
+	ag = !ag
+	la = "!git config -l | grep alias | cut -c 7-"
+	lasttag = describe --tags --abbrev=0
+	lt = describe --tags --abbrev=0
+	ours = "!f() { git co --ours $@ && git add $@; }; f"
+	theirs = "!f() { git co --theirs $@ && git add $@; }; f"
+	mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+	fpr = fetch origin '+refs/pull/*:refs/pull/*'
+[github]
+	user = cnicolov
