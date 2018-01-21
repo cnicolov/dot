@@ -1,8 +1,6 @@
 import unittest
 import subprocess
 
-class CommandNotFoundException(Exception): pass
-
 programs = [
   'ansible',
   'terraform',
