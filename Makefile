@@ -10,7 +10,8 @@ SHELL := bash
 	link-zshaliases \
 	link-zshenv \
 	link-fzf \
-	install-python%-bundle
+	install-python%-bundle \
+	run-tests
 
 all: \
 	brew-bundle \
@@ -23,7 +24,8 @@ all: \
 	link-zshenv \
 	link-fzf \
 	install-python2-bundle \
-	install-python3-bundle
+	install-python3-bundle \
+	run-tests
 
 link-fzf:
 	ln -sf $(PWD)/fzf.zsh ~/.fzf.zsh
