@@ -18,6 +18,9 @@ links = [
   '~/.zshaliases',
   '~/.zshfunctions',
   '~/.config/nvim',
+  '~/.gitconfig',
+  '~/.fzf.zsh',
+  '~/.tmux.conf',
 ]
 
 class DotfilesTest(unittest.TestCase):
