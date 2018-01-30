@@ -41,6 +41,7 @@ if dein#load_state('/Users/christian/.dein')
   call dein#add('cnicolov/vim-licenses')
   call dein#add('artur-shaik/vim-javacomplete2')
   call dein#add('rizzatti/dash.vim')
+  call dein#add('godlygeek/tabular')
 
   call dein#end()
   call dein#save_state()
@@ -168,6 +169,7 @@ augroup Jenkins
         \ shiftwidth=2
         \ syntax=groovy
 augroup END
+au FileType gitcommit set spell
 
 autocmd User Flags call Hoist("buffer", "fugitive#statusline")
 autocmd FileType go nmap <leader>r <Plug>(go-run-tab)
@@ -306,5 +308,6 @@ let g:licenses_custom_path = '$HOME/.config/nvim/licenses/'
 
 command! License call InsertLicense('kinvey')
 let g:ref_javadoc_path = 'build/docs'
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 
 let g:jedi#force_py_version = 3

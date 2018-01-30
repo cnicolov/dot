@@ -11,6 +11,7 @@ SHELL := bash
 	link-zshenv \
 	link-fzf \
 	install-python%-bundle \
+	install-npm-dependencies \
 	run-tests
 
 all: \
@@ -25,6 +26,7 @@ all: \
 	link-fzf \
 	install-python2-bundle \
 	install-python3-bundle \
+	install-npm-dependencies \
 	run-tests
 
 link-fzf:
@@ -56,6 +58,9 @@ brew-bundle:
 
 install-python%-bundle:
 	pip$* install -r python$*-requirements.txt
+
+install-npm-dependencies:
+	npm install -g editorconfig
 
 run-tests:
 	python3 -m unittest $(wildcard tests/*.py)

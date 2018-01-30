@@ -38,3 +38,11 @@ zplug load
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source ~/.zshaliases
 source ~/.zshfunctions
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/christian/.sdkman"
+[[ -s "/Users/christian/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/christian/.sdkman/bin/sdkman-init.sh"
+
+
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH:/usr/local/go/bin

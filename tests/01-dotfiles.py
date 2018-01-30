@@ -3,11 +3,23 @@ import subprocess
 import os.path
 
 programs = [
+  'aws',
   'ansible',
   'terraform',
   'nvim',
   'tree',
   'aws',
+  'tmux',
+  'editorconfig',
+  'kubectl',
+  'fakeroot',
+  'ruby',
+  'sshuttle',
+  'gtar',
+  'ag',
+  'jq',
+  'gpg',
+  'wget',
   'vagrant',
   'virtualbox',
 ]
