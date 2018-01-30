@@ -41,3 +41,7 @@ ssh_to_personal_instance() {
   aws ec2 stop-instances --instance-ids $instance_id
 }
 
+
+sdkman() {
+  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+}
