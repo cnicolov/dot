@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/christian/kinvey/kim/modules'
+let g:netrw_dirhist_2='/Users/christian/kinvey/kim/modules/aws'
+let g:netrw_dirhist_3='/Users/christian/kinvey/kim/modules'

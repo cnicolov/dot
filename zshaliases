@@ -2,4 +2,7 @@ alias ls='ls -G'
 alias ll='ls -lG'
 alias vim='nvim'
 alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
-
+alias t='todo.sh'
+alias today='echo "$(gdate +%Y-%m-%d)"'
+alias tomorrow='echo "$(gdate --date="+1 day" +%Y-%m-%d)"'
+alias tdonetoday='t lsa -personal | grep "x $(today)"'

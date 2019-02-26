@@ -1,0 +1,13 @@
+snippet stdata
+  data "terraform_remote_state" "${1}" {
+    backend = "s3"
+    config {
+      bucket       = "${var.terraform_bucket}"
+      region       = "${var.terraform_bucket_region}"
+      key          = "${1}/${var.custdep}.tfstate"
+      role_arn     = "arn:aws:iam::${var.terraform_bucket_account_id}:role/${var.terraform_bucket_role_name}"
+      session_name = "${var.aws_session_name}"
+    }
+  }
+
+  ${0:TARGET}

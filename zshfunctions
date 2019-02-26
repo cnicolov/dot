@@ -45,3 +45,53 @@ ssh_to_personal_instance() {
 sdkman() {
   [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 }
+
+mkfeature() { 
+  feature="${1:-}"
+  if [[ -z "${feature}" ]]; then
+    echo 'You need to specify feature name'
+  fi
+  export GIT_DIR=${HOME}/kinvey/kim/kim.git
+  git fetch origin master
+  pushd "${HOME}/kinvey/kim" > /dev/null
+  git worktree add "work/$1" master || {
+    echo "Feature already exists"
+    popd > /dev/null
+  }
+  unset GIT_DIR
+  cd "${HOME}/kinvey/kim/work/$i"
+}
+
+custdepprometheus() {
+  local tenancy='di'
+  if [[ "$2" == "kvy" ]]; then
+    tenancy="mt"
+  fi
+  ssh -v -N -L39090:$1-$2-$tenancy-$3-prometheus-01:39090 $2$3.kinvey.net
+}
+
+
+pre_commit_all_cache_repos () {  # Requires sqlite3
+    sqlite3 -column ~/.cache/pre-commit/db.db "SELECT repo, ref, path FROM repos GROUP BY repo ORDER BY ref;"
+}
+
+pre_commit_local_cache_repos () {  # Requires PyYaml & sqlite3
+  while read repo sha; do
+    echo $repo
+    sqlite3 ~/.cache/pre-commit/db.db "SELECT ref, path FROM repos WHERE repo = '$repo' AND ref = '$sha';"
+    echo
+  done <<< "$(python kk.py)"
+}
+
+pre_commit_db_rm_repo () {  # Requires sqlite3
+    local repo=${1?'Missing parameter'}
+    local repo_path=$(sqlite3 ~/.cache/pre-commit/db.db "SELECT path FROM repos WHERE repo = '$repo';")
+    if [ -z "$repo_path" ]; then
+        echo "No repository known for repo $repo"
+        return 1
+    fi
+    rm -rf "$repo_path"
+    sqlite3 ~/.cache/pre-commit/db.db "DELETE FROM repos WHERE repo = '$repo';";
+}
+
+
